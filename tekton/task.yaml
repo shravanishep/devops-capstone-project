@@ -1,15 +1,91 @@
-apiVersion: tekton.dev/v1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: deploy-accounts
+  name: cleanup
 spec:
-  params:
-    - name: image
-      type: string
-      default: customer-accounts:latest
+  description: Clean the workspace
+  workspaces:
+    - name: source
   steps:
-    - name: apply
+    - name: cleanup
+      image: alpine:3
+      command:
+        - /bin/sh
+      args:
+        - -c
+        - "rm -rf $(workspaces.source.path)/* $(workspaces.source.path)/.[!.]*"
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: nose
+spec:
+  description: Run nosetests on the source code
+  workspaces:
+    - name: source
+  params:
+    - name: args
+      type: string
+      default: "-v --with-spec --spec-color"
+  steps:
+    - name: nosetests
+      image: python:3.9-slim
+      workingDir: $(workspaces.source.path)
+      command:
+        - /bin/bash
+      args:
+        - -c
+        - |
+          pip install -r requirements.txt
+          nosetests $(params.args)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: flake8
+spec:
+  description: Run flake8 linter on the source code
+  workspaces:
+    - name: source
+  params:
+    - name: args
+      type: string
+      default: "--count --max-complexity=10 --max-line-length=120 --statistics"
+  steps:
+    - name: flake8
+      image: python:3.9-slim
+      workingDir: $(workspaces.source.path)
+      command:
+        - /bin/bash
+      args:
+        - -c
+        - |
+          pip install flake8
+          flake8 $(params.args) .
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-image
+spec:
+  description: Deploy the application to Kubernetes
+  params:
+    - name: image-name
+      type: string
+      description: The fully qualified image name
+    - name: manifest-dir
+      type: string
+      default: k8s
+  workspaces:
+    - name: source
+  steps:
+    - name: deploy
       image: bitnami/kubectl:latest
-      script: |
-        #!/usr/bin/env sh
-        sed "s#customer-accounts:latest#$(params.image)#" k8s/accounts.yaml | kubectl apply -f -
+      workingDir: $(workspaces.source.path)
+      command:
+        - /bin/bash
+      args:
+        - -c
+        - |
+          sed -i "s|customer-accounts:latest|$(params.image-name)|g" $(params.manifest-dir)/accounts.yaml
+          kubectl apply -f $(params.manifest-dir)/accounts.yaml

@@ -1,3 +1,17 @@
-COMMAND: curl.exe -s http://127.0.0.1:18080/
-OUTPUT:
- {"name":"Account REST API Service","version":"1.0"}
+COMMAND:
+curl -i http://localhost:8080/
+
+RESPONSE:
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.9 Python/3.9.25
+Date: Sun, 25 Oct 2026 14:36:46 GMT
+Content-Type: application/json
+Content-Length: 52
+Permissions-Policy: browsing-topics=()
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Access-Control-Allow-Origin: *
+Connection: close
+
+{"name":"Account REST API Service","version":"1.0"}

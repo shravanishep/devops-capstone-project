@@ -1,5 +1,11 @@
 .git
-.venv
+.venv*
 __pycache__
+*.pyc
+*.pyo
+*.pyd
 *.db
-tests
+.pytest_cache
+.coverage
+evidence
+submission-evidence

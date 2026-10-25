@@ -1,3 +1,18 @@
-STATUS: BLOCKED - no Kubernetes API server was available during audit.
-COMMAND: kubectl get deployments,pods,replicasets,services
-OUTPUT: not captured because cluster was unavailable.
+Kubernetes Deployment Status: BLOCKED - No Kubernetes cluster configured locally.
+
+Manifests are ready at: k8s/accounts.yaml
+
+Deployment manifest verified via dry-run:
+  - Deployment: accounts (1 replica, image: customer-accounts:latest, port: 8080)
+  - Service: accounts (port: 8080 -> 8080)
+  - Readiness probe: GET /health on port 8080
+
+Docker image verified running locally:
+  - Image: customer-accounts:latest
+  - Container port: 8080
+  - Root endpoint returns: {"name":"Account REST API Service","version":"1.0"}
+
+To deploy on a cluster:
+  kubectl apply -f k8s/accounts.yaml
+  kubectl get deployments,pods,replicasets,services -o wide
+  kubectl port-forward service/accounts 8080:8080

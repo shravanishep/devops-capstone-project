@@ -1,16 +1,82 @@
-apiVersion: tekton.dev/v1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: accounts-cd
 spec:
   params:
-    - name: image
+    - name: repo-url
       type: string
-      default: customer-accounts:latest
+      description: The Git repository URL
+    - name: branch
+      type: string
+      default: main
+    - name: build-image
+      type: string
+      description: The fully qualified image name to build
+  workspaces:
+    - name: pipeline-workspace
   tasks:
+    - name: cleanup
+      taskRef:
+        name: cleanup
+      workspaces:
+        - name: source
+          workspace: pipeline-workspace
+
+    - name: clone
+      taskRef:
+        name: git-clone
+        kind: ClusterTask
+      runAfter:
+        - cleanup
+      params:
+        - name: url
+          value: $(params.repo-url)
+        - name: revision
+          value: $(params.branch)
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
+
+    - name: lint
+      taskRef:
+        name: flake8
+      runAfter:
+        - clone
+      workspaces:
+        - name: source
+          workspace: pipeline-workspace
+
+    - name: tests
+      taskRef:
+        name: nose
+      runAfter:
+        - lint
+      workspaces:
+        - name: source
+          workspace: pipeline-workspace
+
+    - name: build
+      taskRef:
+        name: buildah
+        kind: ClusterTask
+      runAfter:
+        - tests
+      params:
+        - name: IMAGE
+          value: $(params.build-image)
+      workspaces:
+        - name: source
+          workspace: pipeline-workspace
+
     - name: deploy
       taskRef:
-        name: deploy-accounts
+        name: deploy-image
+      runAfter:
+        - build
       params:
-        - name: image
-          value: $(params.image)
+        - name: image-name
+          value: $(params.build-image)
+      workspaces:
+        - name: source
+          workspace: pipeline-workspace

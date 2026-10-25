@@ -1,10 +1,18 @@
-apiVersion: tekton.dev/v1
+apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: accounts-cd-
+  generateName: accounts-cd-run-
 spec:
   pipelineRef:
     name: accounts-cd
   params:
-    - name: image
-      value: customer-accounts:latest
+    - name: repo-url
+      value: https://github.com/shravanishep/devops-capstone-project.git
+    - name: branch
+      value: main
+    - name: build-image
+      value: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/customer-accounts:latest
+  workspaces:
+    - name: pipeline-workspace
+      persistentVolumeClaim:
+        claimName: pipelinerun-pvc

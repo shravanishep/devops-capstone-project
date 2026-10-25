@@ -1,2 +1,19 @@
-STATUS: BLOCKED - Tekton was not installed or running in an accessible cluster.
-No pipelinerun.txt is claimed.
+Tekton Pipeline Status: BLOCKED - No Tekton-enabled cluster available locally.
+
+Tekton manifests are ready at:
+  tekton/task.yaml     - cleanup, nose, flake8, deploy-image tasks
+  tekton/pipeline.yaml - Full CD pipeline with 6 stages
+  tekton/pipelinerun.yaml - PipelineRun with PVC workspace
+
+Pipeline stages:
+  1. cleanup     - Clean workspace
+  2. clone       - Clone git repository
+  3. lint        - Run flake8 linting
+  4. tests       - Run nosetests with coverage
+  5. build       - Build Docker image with buildah
+  6. deploy      - Deploy to Kubernetes
+
+Infrastructure requirement: OpenShift or Kubernetes cluster with Tekton Pipelines installed.
+
+This file cannot contain real pipeline run logs because no Tekton cluster is available.
+To run the pipeline, use the IBM Cloud Skills Network lab environment.

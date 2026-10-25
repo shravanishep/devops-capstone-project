@@ -1,8 +1,7 @@
+.venv*/
+.venv311/
 __pycache__/
-.pytest_cache/
-.venv/
+*.pyc
 *.db
 .coverage
-htmlcov/
-*.pyc
-evidence/*.png
+.pytest_cache/
