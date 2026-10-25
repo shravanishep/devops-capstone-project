@@ -1,4 +1,4 @@
-﻿# Customer Accounts Microservice
+# DevOps Capstone - Customer Accounts Microservice
 
 Flask REST API for the IBM DevOps Capstone assignment.
 
@@ -73,4 +73,3 @@ kubectl port-forward service/accounts 8080:8080
 Remote repository: <https://github.com/shravanishep/devops-capstone-project>
 
 External GitHub Project, screenshots, Kubernetes cluster output, and Tekton runs must be added only after they are genuinely performed.
-
