@@ -1,8 +1,8 @@
-# Customer Accounts Microservice
+﻿# Customer Accounts Microservice
 
 Flask REST API for the IBM DevOps Capstone assignment.
 
-[![CI](https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/workflows/ci-build.yaml)
+[![CI](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml)
 
 ## Quick start
 
@@ -70,6 +70,7 @@ kubectl port-forward service/accounts 8080:8080
 - [Submission guide](CAPSTONE_SUBMISSION_GUIDE.md)
 - [Evidence directory](evidence/)
 
-Remote repository: <https://github.com/shravanishep/oaqjp-final-project-emb-ai>
+Remote repository: <https://github.com/shravanishep/devops-capstone-project>
 
 External GitHub Project, screenshots, Kubernetes cluster output, and Tekton runs must be added only after they are genuinely performed.
+

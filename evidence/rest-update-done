@@ -1,3 +1,13 @@
-COMMAND: Invoke-RestMethod http://localhost:18080/accounts/2 -Method Put -ContentType application/json -Body {"first_name":"Grace","last_name":"Murray","email":"grace.audit@example.com"}
-OUTPUT:
-{"email":"grace.audit@example.com","first_name":"Grace","id":2,"last_name":"Murray"}
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.0
+Date: Sun, 25 Oct 2026 12:48:49 GMT
+Content-Type: application/json
+Content-Length: 139
+Permissions-Policy: browsing-topics=()
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Access-Control-Allow-Origin: *
+Connection: close
+
+{"address":"456 Main St.","email":"jane@doe.com","first_name":"Jane","id":2,"last_name":"Doe","name":"Jane Doe","phone_number":"555-1111"}

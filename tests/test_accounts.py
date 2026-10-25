@@ -16,6 +16,8 @@ class AccountsTestCase(unittest.TestCase):
         self.temp_dir.cleanup()
 
     def test_health_and_security_headers(self):
+        info = self.client.get("/")
+        self.assertEqual(info.json, {"name": "Account REST API Service", "version": "1.0"})
         response = self.client.get("/health")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json, {"status": "ok"})
@@ -39,6 +41,18 @@ class AccountsTestCase(unittest.TestCase):
         self.assertEqual(response.json["last_name"], "Byron")
         self.assertEqual(self.client.delete(f"/accounts/{account_id}").status_code, 204)
         self.assertEqual(self.client.get(f"/accounts/{account_id}").status_code, 404)
+
+    def test_course_account_schema(self):
+        payload = {
+            "name": "John Doe",
+            "email": "john@doe.com",
+            "address": "123 Main St.",
+            "phone_number": "555-1212",
+        }
+        response = self.client.post("/accounts", json=payload)
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.json["name"], payload["name"])
+        self.assertEqual(response.json["address"], payload["address"])
 
     def test_validation_and_missing_account(self):
         response = self.client.post("/accounts", json={"email": "bad"})
