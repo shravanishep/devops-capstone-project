@@ -35,7 +35,7 @@ def create_app(test_config=None):
         error = validate_account(data)
         if error:
             return jsonify({"error": error}), 400
-        with connect(app.config["DATABASE"]) as db:
+        with closing(connect(app.config["DATABASE"])) as db:
             cursor = db.execute(
                 "INSERT INTO accounts (first_name, last_name, email) VALUES (?, ?, ?)",
                 (data["first_name"].strip(), data["last_name"].strip(), data["email"].strip()),
@@ -46,7 +46,7 @@ def create_app(test_config=None):
 
     @app.get("/accounts")
     def list_accounts():
-        with connect(app.config["DATABASE"]) as db:
+        with closing(connect(app.config["DATABASE"])) as db:
             accounts = db.execute(
                 "SELECT id, first_name, last_name, email FROM accounts ORDER BY id"
             ).fetchall()
@@ -54,7 +54,7 @@ def create_app(test_config=None):
 
     @app.get("/accounts/<int:account_id>")
     def read_account(account_id):
-        with connect(app.config["DATABASE"]) as db:
+        with closing(connect(app.config["DATABASE"])) as db:
             account = get_account(db, account_id)
         if account is None:
             return jsonify({"error": "Account not found"}), 404
@@ -66,7 +66,7 @@ def create_app(test_config=None):
         error = validate_account(data)
         if error:
             return jsonify({"error": error}), 400
-        with connect(app.config["DATABASE"]) as db:
+        with closing(connect(app.config["DATABASE"])) as db:
             if get_account(db, account_id) is None:
                 return jsonify({"error": "Account not found"}), 404
             db.execute(
@@ -80,7 +80,7 @@ def create_app(test_config=None):
 
     @app.delete("/accounts/<int:account_id>")
     def delete_account(account_id):
-        with connect(app.config["DATABASE"]) as db:
+        with closing(connect(app.config["DATABASE"])) as db:
             result = db.execute("DELETE FROM accounts WHERE id=?", (account_id,))
             db.commit()
         if result.rowcount == 0:

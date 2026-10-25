@@ -27,7 +27,7 @@ blocked; no screenshots or successful external logs are fabricated.
 | 16 | 2 | Copy the complete contents of `evidence/rest-update-done`. | Verified locally |
 | 17 | 2 | Copy the complete contents of `evidence/rest-delete-done`. | Verified locally |
 | 18 | 1 | Upload `sprint2-plan.png` showing the two Sprint 2 stories. | Pending manual screenshot |
-| 19 | 2 | Copy the complete successful GitHub Actions output into `ci-workflow-done`. | Pending: latest run must finish successfully |
+| 19 | 2 | Copy the complete successful GitHub Actions output into `ci-workflow-done`. | Pending: latest run failed because nose tests were not unittest-compatible; fix is being rerun |
 | 20 | 1 | Upload `ci-kanban-done.png` showing CI story in Done. | Pending manual screenshot |
 | 21 | 4 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/.github/workflows/ci-build.yaml | Configured; remote run pending |
 | 22 | 1 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/accounts/__init__.py | Verified; Talisman configuration is in this file |
