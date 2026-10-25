@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: accounts-cd-
+spec:
+  pipelineRef:
+    name: accounts-cd
+  params:
+    - name: image
+      value: customer-accounts:latest

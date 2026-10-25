@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: accounts-cd
+spec:
+  params:
+    - name: image
+      type: string
+      default: customer-accounts:latest
+  tasks:
+    - name: deploy
+      taskRef:
+        name: deploy-accounts
+      params:
+        - name: image
+          value: $(params.image)

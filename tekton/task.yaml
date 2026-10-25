@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: deploy-accounts
+spec:
+  params:
+    - name: image
+      type: string
+      default: customer-accounts:latest
+  steps:
+    - name: apply
+      image: bitnami/kubectl:latest
+      script: |
+        #!/usr/bin/env sh
+        sed "s#customer-accounts:latest#$(params.image)#" k8s/accounts.yaml | kubectl apply -f -

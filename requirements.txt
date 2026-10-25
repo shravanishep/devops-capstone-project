@@ -1,0 +1,7 @@
+Flask==3.1.0
+Flask-Cors==5.0.0
+flask-talisman==1.1.0
+pytest==8.3.4
+flake8==7.1.1
+coverage==7.6.10
+pylint==3.3.3
