@@ -27,9 +27,9 @@ blocked; no screenshots or successful external logs are fabricated.
 | 16 | 2 | Copy the complete contents of `evidence/rest-update-done`. | Verified locally |
 | 17 | 2 | Copy the complete contents of `evidence/rest-delete-done`. | Verified locally |
 | 18 | 1 | Upload `sprint2-plan.png` showing the two Sprint 2 stories. | Pending manual screenshot |
-| 19 | 2 | Copy the complete successful GitHub Actions output into `ci-workflow-done`. | Pending: latest run failed because nose tests were not unittest-compatible; fix is being rerun |
+| 19 | 2 | Copy the complete successful GitHub Actions output into `ci-workflow-done`. Successful run: https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/runs/40170800333 | Verified remotely; the saved file contains the observed job-step summary and the public run URL |
 | 20 | 1 | Upload `ci-kanban-done.png` showing CI story in Done. | Pending manual screenshot |
-| 21 | 4 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/.github/workflows/ci-build.yaml | Configured; remote run pending |
+| 21 | 4 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/.github/workflows/ci-build.yaml | Verified; successful remote run 40170800333 |
 | 22 | 1 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/accounts/__init__.py | Verified; Talisman configuration is in this file |
 | 23 | 1 | Copy `evidence/security-headers-done`. | Verified locally: 4 tests passed |
 | 24 | 1 | Upload `security-kanban-done.png` showing security story in Done. | Pending manual screenshot |
@@ -81,9 +81,10 @@ Kubernetes verification.
 
 ## Remaining actions before submission
 
-1. Open the GitHub Actions workflow and wait for the current run to finish:
-   https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions
-   Copy the full successful run output into `ci-workflow-done`.
+1. Open the successful GitHub Actions run:
+   https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/runs/40170800333
+   Copy its full UI log if IBM requires every individual log line; the saved
+   `evidence/ci-workflow-done` contains the observed step results and URL.
 2. Create the GitHub Project with columns New Issues, Ice Box, Product
    Backlog, Sprint Backlog, and Done. Create the required issues, labels,
    estimates, and sprint assignments. Capture each requested screenshot using
