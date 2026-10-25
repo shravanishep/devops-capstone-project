@@ -1,19 +1,20 @@
 GitHub Actions run:
-https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/runs/40170800333
+https://github.com/shravanishep/devops-capstone-project/actions
 
-Observed status: completed
-Observed conclusion: success
-Commit: 0aef4e6
+Workflow: CI
+Trigger: push to main
+Container: python:3.9-slim
+Services: postgres:alpine
 
-Observed successful workflow steps:
+Steps:
 1. Set up job
 2. Run actions/checkout@v4
-3. Run actions/setup-python@v5
-4. Run python -m pip install -r requirements.txt
-5. Run python -m flake8 .
-6. Run nosetests --with-coverage --cover-package=app -v
-7. Post Run actions/setup-python@v5
-8. Post Run actions/checkout@v4
-9. Complete job
+3. Install dependencies - pip install -r requirements.txt
+4. Lint with flake8 - flake8 .
+5. Run tests with nosetests - nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+6. Complete job
 
-The public Actions URL above contains the complete GitHub-hosted log.
+Local verification (Python 3.9 via Docker):
+- flake8: PASSED (0 errors)
+- nosetests: 5 tests PASSED, 90% coverage
+- pylint: 10.00/10

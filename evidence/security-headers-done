@@ -1,0 +1,17 @@
+
+Accounts test case
+- account crud
+- cors preflight
+- course account schema
+- health and security headers
+- validation and missing account
+
+Name     Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------
+app.py     107      6     28      7    90%   76, 79, 111->113, 128, 144, 178, 185
+----------------------------------------------------
+TOTAL      107      6     28      7    90%
+----------------------------------------------------------------------
+Ran 5 tests in 1.007s
+
+OK
