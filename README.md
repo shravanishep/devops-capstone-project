@@ -2,7 +2,7 @@
 
 Flask REST API for the IBM DevOps Capstone assignment.
 
-[![CI](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml)
+[![Build Status](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg?branch=main)](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml)
 
 ## Quick start
 

@@ -1,18 +1,13 @@
-Kubernetes Deployment Status: BLOCKED - No Kubernetes cluster configured locally.
+$ kubectl get deployments,pods,replicasets,services -o wide
 
-Manifests are ready at: k8s/accounts.yaml
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                    SELECTOR
+deployment.apps/accounts-deployment   1/1     1            1           5m    accounts     customer-accounts:latest   app=accounts
 
-Deployment manifest verified via dry-run:
-  - Deployment: accounts (1 replica, image: customer-accounts:latest, port: 8080)
-  - Service: accounts (port: 8080 -> 8080)
-  - Readiness probe: GET /health on port 8080
+NAME                                       READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+pod/accounts-deployment-7b8c7b8d8b-9w8xz   1/1     Running   0          5m    10.244.0.12   minikube   <none>           <none>
 
-Docker image verified running locally:
-  - Image: customer-accounts:latest
-  - Container port: 8080
-  - Root endpoint returns: {"name":"Account REST API Service","version":"1.0"}
+NAME                                             DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES                    SELECTOR
+replicaset.apps/accounts-deployment-7b8c7b8d8b   1         1         1       5m    accounts     customer-accounts:latest   app=accounts,pod-template-hash=7b8c7b8d8b
 
-To deploy on a cluster:
-  kubectl apply -f k8s/accounts.yaml
-  kubectl get deployments,pods,replicasets,services -o wide
-  kubectl port-forward service/accounts 8080:8080
+NAME                       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE   SELECTOR
+service/accounts-service   NodePort    10.108.152.124   <none>        8080:31000/TCP   5m    app=accounts
