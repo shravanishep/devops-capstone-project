@@ -1,0 +1,3 @@
+STATUS: BLOCKED - no Kubernetes API server was available during audit.
+COMMAND: kubectl get deployments,pods,replicasets,services
+OUTPUT: not captured because cluster was unavailable.

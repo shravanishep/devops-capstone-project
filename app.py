@@ -3,8 +3,8 @@ import sqlite3
 from contextlib import closing
 
 from flask import Flask, jsonify, request
-from flask_cors import CORS
-from flask_talisman import Talisman
+
+from accounts import configure_security
 
 
 def database_path():
@@ -22,8 +22,7 @@ def create_app(test_config=None):
     if test_config:
         app.config.update(test_config)
 
-    CORS(app, resources={r"/*": {"origins": os.getenv("CORS_ORIGINS", "*")}})
-    Talisman(app, force_https=False, content_security_policy=False)
+    configure_security(app)
     initialize_database(app.config["DATABASE"])
 
     @app.get("/health")

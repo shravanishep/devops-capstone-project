@@ -1,16 +1,18 @@
 # User stories
 
-1. As a developer, I can set up and test the development environment.
-2. As a customer, I can create an account.
-3. As a customer, I can read an account.
-4. As a customer, I can list all accounts.
-5. As a customer, I can update an account.
-6. As a customer, I can delete an account.
-7. As a maintainer, I can run automated CI checks.
-8. As an operator, I can enforce security headers and CORS.
-9. As an operator, I can build and run a Docker image.
-10. As an operator, I can deploy the image to Kubernetes.
-11. As an operator, I can automate deployment with Tekton when a cluster is available.
+| Story | User story | Label | Sprint | Estimate |
+| --- | --- | --- | --- | --- |
+| 1 | Setting up the development environment | Technical Debt | Sprint 1 | 3 |
+| 2 | Create an account in the service | Enhancement | Sprint 1 | 3 |
+| 3 | Read an account from the service | Enhancement | Sprint 1 | 3 |
+| 4 | List all accounts in the service | Enhancement | Sprint 1 | 3 |
+| 5 | Update an account in the service | Enhancement | Sprint 1 | 3 |
+| 6 | Delete an account from the service | Enhancement | Sprint 1 | 3 |
+| 7 | Need the ability to automate continuous integration checks | Enhancement | Sprint 2 | 3 |
+| 8 | Need to add security headers and CORS policies | Technical Debt | Sprint 3 | 3 |
+| 9 | Containerize your microservice using Docker | Enhancement | Sprint 3 | 3 |
+| 10 | Deploy your Docker image to Kubernetes | Enhancement | Sprint 3 | 5 |
+| 11 | Create a CD pipeline to automate deployment to Kubernetes | Enhancement | Sprint 3 | 5 |
 
 ## Board setup
 

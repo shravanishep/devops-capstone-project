@@ -1,132 +1,103 @@
-# IBM DevOps Capstone audit and submission guide
+# IBM DevOps Capstone submission guide
 
 Repository: https://github.com/shravanishep/oaqjp-final-project-emb-ai  
-Branch: `main`
+All public file URLs below use the `main` branch.
 
-## Important limits
+The following answers use only evidence actually observed. Items requiring
+GitHub Project screenshots, a Kubernetes cluster, or Tekton remain pending or
+blocked; no screenshots or successful external logs are fabricated.
 
-The supplied assignment description states **33 tasks worth 50 points**, but it
-does not include the official task numbering, individual task names, or
-per-task point allocation. The task labels below are therefore an explicit
-mapping to the requirements in the supplied description, not a claim that they
-are the hidden IBM rubric's exact numbering. Per-task points are **not stated
-in the supplied material**; do not invent them when submitting.
+| Task | Points | Exact answer / URL / filename | Status |
+| ---: | ---: | --- | --- |
+| 1 | 1 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/README.md | Verified after push; badge points to the CI workflow |
+| 2 | 1 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/user-story.md | Verified |
+| 3 | 1 | Upload `planning-userstories-done.png` after capturing New Issues column. | Pending manual screenshot |
+| 4 | 1 | Upload `planning-productbacklog-done.png` after capturing Ice Box column. | Pending manual screenshot |
+| 5 | 1 | Upload `planning-labels-done.png` after capturing Product Backlog labels. | Pending manual screenshot |
+| 6 | 1 | Upload `planning-kanban-done.png` after capturing Sprint Backlog estimates and Sprint 1. | Pending manual screenshot |
+| 7 | 1 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/setup.cfg | Verified |
+| 8 | 1 | Upload `rest-techdebt-done.png` showing setup story in Done. | Pending manual screenshot |
+| 9 | 1 | Upload `read-accounts.png` showing read story in Done. | Pending manual screenshot |
+| 10 | 1 | Upload `list-accounts.png` showing list story in Done. | Pending manual screenshot |
+| 11 | 1 | Upload `update-accounts.png` showing update story in Done. | Pending manual screenshot |
+| 12 | 1 | Upload `delete-accounts.png` showing delete story in Done. | Pending manual screenshot |
+| 13 | 2 | Copy the complete contents of `evidence/rest-create-done`. | Verified locally |
+| 14 | 2 | Copy the complete contents of `evidence/rest-list-done`. | Verified locally |
+| 15 | 2 | Copy the complete contents of `evidence/rest-read-done`. | Verified locally |
+| 16 | 2 | Copy the complete contents of `evidence/rest-update-done`. | Verified locally |
+| 17 | 2 | Copy the complete contents of `evidence/rest-delete-done`. | Verified locally |
+| 18 | 1 | Upload `sprint2-plan.png` showing the two Sprint 2 stories. | Pending manual screenshot |
+| 19 | 2 | Copy the complete successful GitHub Actions output into `ci-workflow-done`. | Pending: latest run must finish successfully |
+| 20 | 1 | Upload `ci-kanban-done.png` showing CI story in Done. | Pending manual screenshot |
+| 21 | 4 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/.github/workflows/ci-build.yaml | Configured; remote run pending |
+| 22 | 1 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/accounts/__init__.py | Verified; Talisman configuration is in this file |
+| 23 | 1 | Copy `evidence/security-headers-done`. | Verified locally: 4 tests passed |
+| 24 | 1 | Upload `security-kanban-done.png` showing security story in Done. | Pending manual screenshot |
+| 25 | 1 | Upload `sprint3-plan.png` showing the three Sprint 3 stories. | Pending manual screenshot |
+| 26 | 1 | Copy `evidence/kube-app-output` only after a Kubernetes port-8080 response exists. | Blocked: Kubernetes API unavailable |
+| 27 | 1 | Upload `kube-docker-done.png` showing Docker story in Done. | Pending manual screenshot |
+| 28 | 1 | Upload `kube-kubernetes-done.png` only after a real deployment. | Blocked: Kubernetes API unavailable |
+| 29 | 2 | https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/Dockerfile | Verified |
+| 30 | 2 | Copy `evidence/kube-images`. | Verified: local Docker image metadata |
+| 31 | 2 | Copy `evidence/kube-deploy-accounts` after a real cluster deployment. | Blocked: Kubernetes API unavailable |
+| 32 | 5 | Copy `evidence/pipelinerun.txt` after a real successful Tekton run. | Blocked: Tekton/cluster unavailable |
+| 33 | 1 | Upload `cd-pipeline-done.png` after the CD pipeline deploys successfully. | Blocked pending Tekton deployment |
 
-Public file URL pattern:
-`https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/<path>`
+## Exact local text answers
 
-## Tasks 1-33
+### Tasks 13-17
 
-| Task | Points | Exact answer / submission text | Public URL or evidence | Status |
-| ---: | :--- | --- | --- | --- |
-| 1 | Not stated | Workspace inspected; existing Git repository and remote preserved. | [README.md](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/README.md) | Verified |
-| 2 | Not stated | Python Flask project initialized with dependency and ignore files. | [requirements.txt](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/requirements.txt), [.gitignore](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/.gitignore) | Verified |
-| 3 | Not stated | User stories documented for setup, CRUD, CI, security, Docker, Kubernetes, and CD. | [user-story.md](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/user-story.md) | Verified locally; GitHub board pending |
-| 4 | Not stated | Create GitHub Project columns New Issues, Ice Box, Product Backlog, Sprint Backlog, and Done. | No URL captured; create manually in GitHub Project. | Pending |
-| 5 | Not stated | Add Technical Debt and Enhancement labels, estimates, and sprint assignments. | No URL captured; create manually in GitHub Issues/Project. | Pending |
-| 6 | Not stated | Create the required user-story issues and move them through the board. | No issue URLs captured. | Pending |
-| 7 | Not stated | Development environment setup is documented and reproducible. | [README.md](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/README.md) | Verified |
-| 8 | Not stated | `POST /accounts` creates an account and returns HTTP 201. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), `evidence/rest-create-done.txt` | Verified locally |
-| 9 | Not stated | `GET /accounts/<id>` reads an account and returns HTTP 200 or HTTP 404. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), `evidence/rest-read-done.txt` | Verified locally |
-| 10 | Not stated | `GET /accounts` lists accounts. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), `evidence/rest-list-done.txt` | Verified locally |
-| 11 | Not stated | `PUT` and `PATCH /accounts/<id>` update an account. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), `evidence/rest-update-done.txt` | Verified locally |
-| 12 | Not stated | `DELETE /accounts/<id>` deletes an account and returns HTTP 204. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), `evidence/rest-delete-done.txt` | Verified locally |
-| 13 | Not stated | Invalid input and missing accounts return JSON errors with HTTP 400/404. | [tests/test_accounts.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/tests/test_accounts.py) | Verified locally |
-| 14 | Not stated | SQLite persistence is used for accounts. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py) | Verified locally |
-| 15 | Not stated | CRUD tests cover create, list, read, update, delete, validation, and missing records. | [tests/test_accounts.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/tests/test_accounts.py) | Verified locally |
-| 16 | Not stated | REST command evidence is internally consistent. | `evidence/rest-*-done.txt` | Verified locally |
-| 17 | Not stated | `python -m pytest -q` completed successfully. | `evidence/pytest-output.txt` | Verified |
-| 18 | Not stated | `python -m flake8 .` completed successfully. | `evidence/flake8-output.txt` | Verified |
-| 19 | Not stated | Coverage completed at 93%. | `evidence/coverage-report.txt` | Verified |
-| 20 | Not stated | Pylint completed with rating 10.00/10. | `evidence/pylint-output.txt` | Verified |
-| 21 | Not stated | `setup.cfg` contains pytest, coverage, nosetests, Flake8, and Pylint sections. | [setup.cfg](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/setup.cfg) | Verified |
-| 22 | Not stated | CI workflow installs dependencies, runs Flake8, and runs pytest on push/PR. | [ci-build.yaml](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/.github/workflows/ci-build.yaml) | Configured; remote run pending |
-| 23 | Not stated | GitHub Actions run URL: https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/runs/40170250553 | Real run exists for commit `90b5b85`; status was `queued` at audit time, so wait for completion before claiming success. | Pending |
-| 24 | Not stated | Talisman security headers are enabled. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), `evidence/pytest-output.txt` | Verified locally |
-| 25 | Not stated | CORS is configured and preflight behavior is tested. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), [tests/test_accounts.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/tests/test_accounts.py) | Verified locally |
-| 26 | Not stated | Dockerfile builds a non-root image exposing port 8080. | [Dockerfile](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/Dockerfile), `evidence/docker-build.txt` | Verified locally |
-| 27 | Not stated | Docker container responded to `GET /health` with `{"status":"ok"}`. | `evidence/docker-app-output.txt`, `evidence/kube-images.txt` | Verified locally |
-| 28 | Not stated | Kubernetes Deployment and Service manifests are prepared. | [k8s/accounts.yaml](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/k8s/accounts.yaml) | Prepared; cluster deployment pending |
-| 29 | Not stated | Kubernetes deployment output must be captured with `kubectl get deployments,pods,replicasets,services`. | `evidence/kubernetes-get-nodes.txt` records current cluster failure; no deployment output exists. | Blocked: cluster API unavailable |
-| 30 | Not stated | Kubernetes application response must be captured after port-forwarding. | No `kube-app-output` exists because no cluster deployment was verified. | Blocked |
-| 31 | Not stated | Tekton Task, Pipeline, and PipelineRun manifests are prepared. | [tekton/task.yaml](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/tekton/task.yaml), [tekton/pipeline.yaml](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/tekton/pipeline.yaml), [tekton/pipelinerun.yaml](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/tekton/pipelinerun.yaml) | Prepared; run pending |
-| 32 | Not stated | Tekton PipelineRun logs and successful deployment must be captured. | No `pipelinerun.txt`; no successful PipelineRun observed. | Blocked: Tekton/cluster unavailable |
-| 33 | Not stated | Genuine GitHub Project, CI, Docker, Kubernetes, and Tekton screenshots must be captured. | No screenshots are claimed; see manual instructions below. | Pending |
-
-## Complete verified command output
-
-### Tests
+The complete command and output for each REST operation is saved in the
+extensionless files under `evidence/`:
 
 ```text
+evidence/rest-create-done
+evidence/rest-list-done
+evidence/rest-read-done
+evidence/rest-update-done
+evidence/rest-delete-done
+```
+
+The verified sequence creates account ID 2, reads it, updates its last name
+to Murray, lists it, and deletes it with HTTP 204.
+
+### Task 23
+
+```text
+COMMAND: python -m pytest -q
+OUTPUT:
 ....                                                                     [100%]
 4 passed in 0.56s
 ```
 
-### Coverage
+This verifies the Accounts service tests, security headers, and CORS
+preflight test. The exact saved file is `evidence/security-headers-done`.
 
-```text
-Name     Stmts   Miss Branch BrPart  Cover   Missing
-----------------------------------------------------
-app.py      89      4     20      4    93%   69, 72, 129, 136
-----------------------------------------------------
-TOTAL       89      4     20      4    93%
-```
+### Task 30
 
-### Pylint
+The saved `evidence/kube-images` contains the locally observed Docker image
+name, tag, image ID, creation time, and size. This is Docker verification, not
+Kubernetes verification.
 
-```text
-Your code has been rated at 10.00/10
-```
+## Remaining actions before submission
 
-### REST CRUD
-
-The complete commands and actual outputs are in:
-
-- `evidence/rest-create-done.txt`
-- `evidence/rest-list-done.txt`
-- `evidence/rest-read-done.txt`
-- `evidence/rest-update-done.txt`
-- `evidence/rest-delete-done.txt`
-
-The verified sequence created account ID 2, read it, updated the last name to
-Murray, listed it, and deleted it with HTTP 204.
-
-### Docker
-
-```text
-Name=customer-accounts:latest
-ImageID=sha256:e2a31bd18e8d9b93ab7cc80457304dc2c97cf92d7cb8109717667a6d42bfa4b9
-```
-
-The actual image metadata and container response are in
-`evidence/kube-images.txt` and `evidence/docker-app-output.txt`.
-
-## Manual actions required before submission
-
-1. Push is performed by this audit commit. Open the repository URL above and
-   confirm the files are publicly visible.
-2. Create the GitHub Project board and five columns. Create the required
-   issues, labels, estimates, sprint assignments, and capture the requested
-   board screenshots.
-3. Open the pushed GitHub Actions workflow at
-   https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/runs/40170250553.
-   It was observed as `queued` at audit time. Wait for a real successful run
-   and then submit that run URL for Task 23; if it fails, fix the workflow
-   before submitting.
-4. Start a supported Kubernetes cluster. Run:
+1. Open the GitHub Actions workflow and wait for the current run to finish:
+   https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions
+   Copy the full successful run output into `ci-workflow-done`.
+2. Create the GitHub Project with columns New Issues, Ice Box, Product
+   Backlog, Sprint Backlog, and Done. Create the required issues, labels,
+   estimates, and sprint assignments. Capture each requested screenshot using
+   the exact filename in Tasks 3-6, 8-12, 18, 20, 24-25, and 27-28.
+3. Start an authorized Kubernetes cluster, then run:
 
    ```powershell
-   docker build -t customer-accounts:latest .
    kubectl apply -f k8s\accounts.yaml
    kubectl get deployments,pods,replicasets,services
    kubectl port-forward service/accounts 8080:8080
    ```
 
-   Save the real command output as `kube-deploy-accounts` and the real HTTP
-   response as `kube-app-output`.
-5. Install/configure Tekton in that cluster, apply the three files under
-   `tekton\`, run a real PipelineRun, save its logs as `pipelinerun.txt`, and
-   capture the deployment result.
-6. Capture genuine screenshots only from the actual GitHub Project, successful
-   Actions run, terminal, running container, Kubernetes state, and Tekton
-   dashboard. Do not create placeholder images.
+   Save the actual outputs to `kube-deploy-accounts` and `kube-app-output`.
+4. Install Tekton in that cluster, apply `tekton\task.yaml`,
+   `tekton\pipeline.yaml`, and `tekton\pipelinerun.yaml`, run the PipelineRun,
+   and save the complete real logs to `pipelinerun.txt`.
+5. Capture the CD screenshot only after the real deployment succeeds.

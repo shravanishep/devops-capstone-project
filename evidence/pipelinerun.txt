@@ -1,0 +1,2 @@
+STATUS: BLOCKED - Tekton was not installed or running in an accessible cluster.
+No pipelinerun.txt is claimed.

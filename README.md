@@ -2,6 +2,8 @@
 
 Flask REST API for the IBM DevOps Capstone assignment.
 
+[![CI](https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/workflows/ci-build.yaml)
+
 ## Quick start
 
 ```powershell
@@ -58,6 +60,7 @@ kubectl port-forward service/accounts 8080:8080
 ## Project links
 
 - [Application](app.py)
+- [Security configuration](accounts/__init__.py)
 - [Tests](tests/test_accounts.py)
 - [Dependencies](requirements.txt)
 - [CI workflow](.github/workflows/ci-build.yaml)
