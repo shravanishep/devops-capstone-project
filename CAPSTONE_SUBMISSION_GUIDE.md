@@ -41,7 +41,7 @@ Public file URL pattern:
 | 20 | Not stated | Pylint completed with rating 10.00/10. | `evidence/pylint-output.txt` | Verified |
 | 21 | Not stated | `setup.cfg` contains pytest, coverage, nosetests, Flake8, and Pylint sections. | [setup.cfg](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/setup.cfg) | Verified |
 | 22 | Not stated | CI workflow installs dependencies, runs Flake8, and runs pytest on push/PR. | [ci-build.yaml](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/.github/workflows/ci-build.yaml) | Configured; remote run pending |
-| 23 | Not stated | GitHub Actions must be run after push and its real run URL submitted. | No run URL observed. | Pending |
+| 23 | Not stated | GitHub Actions run URL: https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/runs/40170250553 | Real run exists for commit `90b5b85`; status was `queued` at audit time, so wait for completion before claiming success. | Pending |
 | 24 | Not stated | Talisman security headers are enabled. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), `evidence/pytest-output.txt` | Verified locally |
 | 25 | Not stated | CORS is configured and preflight behavior is tested. | [app.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/app.py), [tests/test_accounts.py](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/tests/test_accounts.py) | Verified locally |
 | 26 | Not stated | Dockerfile builds a non-root image exposing port 8080. | [Dockerfile](https://github.com/shravanishep/oaqjp-final-project-emb-ai/blob/main/Dockerfile), `evidence/docker-build.txt` | Verified locally |
@@ -108,8 +108,11 @@ The actual image metadata and container response are in
 2. Create the GitHub Project board and five columns. Create the required
    issues, labels, estimates, sprint assignments, and capture the requested
    board screenshots.
-3. Open the pushed GitHub Actions workflow. Wait for a real successful run and
-   paste that run URL into Task 23.
+3. Open the pushed GitHub Actions workflow at
+   https://github.com/shravanishep/oaqjp-final-project-emb-ai/actions/runs/40170250553.
+   It was observed as `queued` at audit time. Wait for a real successful run
+   and then submit that run URL for Task 23; if it fails, fix the workflow
+   before submitting.
 4. Start a supported Kubernetes cluster. Run:
 
    ```powershell
