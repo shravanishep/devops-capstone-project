@@ -2,6 +2,7 @@
 
 Flask REST API for the IBM DevOps Capstone assignment.
 
+[![CI Workflow](https://github.com/shravanishep/devops-capstone-project/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/shravanishep/devops-capstone-project/actions/workflows/workflow.yml)
 [![Build Status](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg?branch=main)](https://github.com/shravanishep/devops-capstone-project/actions/workflows/ci-build.yaml)
 
 ## Quick start
@@ -63,7 +64,9 @@ kubectl port-forward service/accounts 8080:8080
 - [Security configuration](accounts/__init__.py)
 - [Tests](tests/test_accounts.py)
 - [Dependencies](requirements.txt)
-- [CI workflow](.github/workflows/ci-build.yaml)
+- [CI workflow (.github/workflows/workflow.yml)](.github/workflows/workflow.yml)
+- [Legacy CI workflow (.github/workflows/ci-build.yaml)](.github/workflows/ci-build.yaml)
+- [Tekton Tasks (.tekton/tasks.yml)](.tekton/tasks.yml)
 - [Dockerfile](Dockerfile)
 - [Kubernetes manifest](k8s/accounts.yaml)
 - [User stories](user-story.md)
